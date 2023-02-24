@@ -1,0 +1,12 @@
+@import url("https://fonts.cdnfonts.com/css/inter");
+
+#task-container {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 60px;
+  padding: 70px;
+  margin-top: -50px;
+
+  color: #007fdb;
+}
