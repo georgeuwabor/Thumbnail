@@ -29,6 +29,8 @@ const Thumbnail = () => {
             <List
               name={item.name ? item.name : "No Task"}
               date={item.date ? item.date : "No Date"}
+              isCompleted={item.isCompleted}
+              id={item._id}
             />
           ))}
         </div>
