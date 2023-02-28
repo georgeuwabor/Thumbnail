@@ -7,12 +7,11 @@ import axios from "axios";
 
 const Thumbnail = () => {
   const [list, setList] = useState([]);
+  const baseUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const x = async () => {
-      const data = await axios.get(
-        "https://uptight-teal-walrus.cyclic.app/task"
-      );
+      const data = await axios.get(baseUrl);
       setList(data.data);
     };
     x();

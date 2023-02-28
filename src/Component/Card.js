@@ -14,10 +14,7 @@ const Card = () => {
       isCompleted: false,
     };
 
-    const res = await axios.post(
-      "https://uptight-teal-walrus.cyclic.app/task",
-      form
-    );
+    const res = await axios.post(process.env.REACT_APP_API_URL, form);
 
     console.log(res);
   };

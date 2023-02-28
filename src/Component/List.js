@@ -9,13 +9,13 @@ const List = (props) => {
     };
 
     const data = await axios.put(
-      `https://uptight-teal-walrus.cyclic.app/task/${props.id}`,
+      `${process.env.REACT_APP_API_URL}/${props.id}`,
       body
     );
   };
 
   const del = () => {
-    axios.delete(`https://uptight-teal-walrus.cyclic.app/task/${props.id}`);
+    axios.delete(`${process.env.REACT_APP_API_URL}/${props.id}`);
   };
   return (
     <>
