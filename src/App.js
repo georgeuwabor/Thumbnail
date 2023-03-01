@@ -1,11 +1,16 @@
 import "./App.css";
 import Thumbnail from "./Pages/Thumbnail";
+import Task from "./Component/Task";
+import { GetTaskProvider } from "./Context/GetTask";
 
 function App() {
   return (
-    <>
-      <Thumbnail />
-    </>
+    <div>
+      <GetTaskProvider>
+        <Task />
+        <Thumbnail />
+      </GetTaskProvider>
+    </div>
   );
 }
 

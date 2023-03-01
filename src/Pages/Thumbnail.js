@@ -1,25 +1,19 @@
 import Card from "../Component/Card";
 import List from "../Component/List";
-import Task from "../Component/Task";
 import Time from "../Component/Time";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import GetTask from "../Context/GetTask";
+import { useContext } from "react";
 
 const Thumbnail = () => {
-  const [list, setList] = useState([]);
-  const baseUrl = process.env.REACT_APP_API_URL;
+  const { getFunction, list } = useContext(GetTask);
 
   useEffect(() => {
-    const x = async () => {
-      const data = await axios.get(baseUrl);
-      setList(data.data);
-    };
-    x();
+    getFunction();
   });
 
   return (
     <div id="thumbnail-container">
-      <Task />
       <div id="thumbnail">
         <Time />
         <Card />
