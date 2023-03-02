@@ -1,22 +1,12 @@
 import Vector from "../Asset/Vector.png";
 import "../Style/List.css";
-import axios from "axios";
+import { useContext } from "react";
+import UpdateTask from "../Context/UpdateTask";
+import DeleteTask from "../Context/DeleteTask";
 
 const List = (props) => {
-  const check = async (e) => {
-    const body = {
-      isCompleted: e.target.checked,
-    };
-
-    const data = await axios.put(
-      `${process.env.REACT_APP_API_URL}/${props.id}`,
-      body
-    );
-  };
-
-  const del = () => {
-    axios.delete(`${process.env.REACT_APP_API_URL}/${props.id}`);
-  };
+  const { check } = useContext(UpdateTask);
+  const { del } = useContext(DeleteTask);
   return (
     <>
       <div id="List-container">
@@ -28,10 +18,10 @@ const List = (props) => {
           <input
             type="checkbox"
             className="checkbox"
-            onChange={check}
+            onChange={(e) => check(e, props.id)}
             checked={props.isCompleted}
           />
-          <img src={Vector} alt="" onClick={del} />
+          <img src={Vector} alt="" onClick={() => del(props.id)} />
         </div>
       </div>
     </>

@@ -1,27 +1,20 @@
 import "../Style/Card.css";
-import axios from "axios";
-import { useState } from "react";
+
+import { useState, useContext } from "react";
+import PostTask from "../Context/PostTask";
 
 const Card = () => {
   const [Task, setTask] = useState(" ");
-  const update = async (e) => {
-    e.preventDefault();
-    setTask(" ");
-
-    const form = {
-      name: Task,
-      date: new Date(),
-      isCompleted: false,
-    };
-
-    const res = await axios.post(process.env.REACT_APP_API_URL, form);
-
-    console.log(res);
-  };
+  const { update } = useContext(PostTask);
 
   return (
     <>
-      <form id="form-container" onSubmit={update}>
+      <form
+        id="form-container"
+        onSubmit={(e) => {
+          update(e, setTask, Task);
+        }}
+      >
         <div id="input-container">
           <input
             value={Task}
